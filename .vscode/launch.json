@@ -1,0 +1,29 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Local Server",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "python3",
+      "args": [
+        "-m",
+        "http.server",
+        "5500",
+        "-d",
+        "/home/dszerty/PycharmProjects/"
+      ],
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "Ngrok HTTP 5500",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "ngrok",
+      "args": ["http", "5500"],
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}"
+    },
+  ]
+}

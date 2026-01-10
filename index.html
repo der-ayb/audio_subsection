@@ -3,242 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#007bff">
-    <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoi2YXZgtiy2LUg2KfZhNmC2LHYotmGINin2YTYtdmI2KrZiiIsInNob3J0X25hbWUiOiLZhdmC2LXYpyDYp9mE2YLYsdii2YYiLCJzdGFydF91cmwiOiIuLyIsImRpc3BsYXkiOiJzdGFuZGFsb25lIiwiYmFja2dyb3VuZF9jb2xvciI6IiNmNWY1ZjUiLCJ0aGVtZV9jb2xvciI6IiMwMDdiZmYiLCJpY29ucyI6W3sic3JjIjoiZGF0YTppbWFnZS9zdmcreG1sLCUzQ3N2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxMDAgMTAwJyUzRSUzQ3JlY3Qgd2lkdGg9JzEwMCcgaGVpZ2h0PScxMDAnIGZpbGw9JyUyMzAwN2JmZicvJTNFJTNDdGV4dCB4PSc1MCcgeT0nNTAnIGZvbnQtc2l6ZT0nNjAnIGZpbGw9J3doaXRlJyB0ZXh0LWFuY2hvcj0nbWlkZGxlJyBkeT0nLjNlbSclM0XZgiUzQy90ZXh0JTNFJTNDL3N2ZyUzRSIsInNpemVzIjoiMTkyeDE5MiIsInR5cGUiOiJpbWFnZS9zdmcreG1sIn0seyJzcmMiOiJkYXRhOmltYWdlL3N2Zyt4bWwsJTNDc3ZnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zycgdmlld0JveD0nMCAwIDEwMCAxMDAnJTNFJTNDcmVjdCB3aWR0aD0nMTAwJyBoZWlnaHQ9JzEwMCcgZmlsbD0nJTIzMDA3YmZmJy8lM0UlM0N0ZXh0IHg9JzUwJyB5PSc1MCcgZm9udC1zaXplPSc2MCcgZmlsbD0nd2hpdGUnIHRleHQtYW5jaG9yPSdtaWRkbGUnIGR5PScuM2VtJyUzRdmCJTNDL3RleHQlM0UlM0Mvc3ZnJTNFIiwic2l6ZXMiOiI1MTJ4NTEyIiwidHlwZSI6ImltYWdlL3N2Zyt4bWwifV19">
+    <meta name="theme-color" content="#0d6efd">
+    <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoi2YXZgtiq2LfZgSDYp9mE2YLYsdii2YYg2KfZhNi12YjYqtmKIiwic2hvcnRfbmFtZSI6ItmF2YLYqti32YEg2KfZhNmC2LHYotmGIiwic3RhcnRfdXJsIjoiLi8iLCJkaXNwbGF5Ijoic3RhbmRhbG9uZSIsImJhY2tncm91bmRfY29sb3IiOiIjZjhmOWZhIiwidGhlbWVfY29sb3IiOiIjMGQ2ZWZkIiwiaWNvbnMiOlt7InNyYyI6ImRhdGE6aW1hZ2Uvc3ZnK3htbCwlM0NzdmcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB2aWV3Qm94PScwIDAgMTAwIDEwMCclM0UlM0NyZWN0IHdpZHRoPScxMDAnIGhlaWdodD0nMTAwJyBmaWxsPSclMjMwZDZlZmQnLyUzRSUzQ3RleHQgeD0nNTAnIHk9JzUwJyBmb250LXNpemU9JzYwJyBmaWxsPSd3aGl0ZScgdGV4dC1hbmNob3I9J21pZGRsZScgZHk9Jy4zZW0nJTNF2YIlM0MvdGV4dCUzRSUzQy9zdmclM0UiLCJzaXplcyI6IjE5MngxOTIiLCJ0eXBlIjoiaW1hZ2Uvc3ZnK3htbCJ9LHsic3JjIjoiZGF0YTppbWFnZS9zdmcreG1sLCUzQ3N2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxMDAgMTAwJyUzRSUzQ3JlY3Qgd2lkdGg9JzEwMCcgaGVpZ2h0PScxMDAnIGZpbGw9JyUyMzBkNmVmZCcvJTNFJTNDdGV4dCB4PSc1MCcgeT0nNTAnIGZvbnQtc2l6ZT0nNjAnIGZpbGw9J3doaXRlJyB0ZXh0LWFuY2hvcj0nbWlkZGxlJyBkeT0nLjNlbSclM0XZgiUzQy90ZXh0JTNFJTNDL3N2ZyUzRSIsInNpemVzIjoiNTEyeDUxMiIsInR5cGUiOiJpbWFnZS9zdmcreG1sIn1dfQ==">
     <title>مقتطف القرآن الصوتي</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            max-width: 700px;
-            margin: 50px auto;
-            padding: 20px;
-            background: #f5f5f5;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 0;
         }
         
-        .container {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        .main-container {
+            max-width: 800px;
+            margin: 0 auto;
         }
         
-        h2 {
-            margin-top: 0;
-            color: #333;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        .install-section {
-            background: #fff3cd;
-            border: 1px solid #ffeaa7;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            display: none;
-        }
-        
-        .install-btn {
-            background: #28a745;
-            color: white;
+        .card {
             border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 10px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
         
-        .offline-section {
-            background: #e7f3ff;
-            border: 1px solid #b8daff;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
+        .card-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px 15px 0 0 !important;
+            padding: 20px;
         }
         
-        .offline-section h3 {
-            margin-bottom: 10px;
-            font-size: 16px;
+        .btn-install {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            border: none;
+            color: white;
+        }
+        
+        .btn-install:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(17, 153, 142, 0.4);
+        }
+        
+        .online-indicator {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            z-index: 1000;
+        }
+        
+        .online {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .offline {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .form-select, .btn {
+            border-radius: 10px;
+        }
+        
+        .aya-select {
+            font-family: 'Traditional Arabic', 'Arial', sans-serif;
+            max-height: 200px;
         }
         
         .surah-checkbox {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 5px 0;
-        }
-        
-        .download-offline-btn {
-            background: #17a2b8;
-            color: white;
-            border: none;
-            padding: 10px 20px;
+            transition: background 0.2s;
+            padding: 8px;
             border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 10px;
         }
         
-        .download-offline-btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
+        .surah-checkbox:hover {
+            background: #f8f9fa;
         }
         
-        label {
-            display: block;
-            margin: 15px 0 5px;
-            font-weight: bold;
-            color: #555;
-        }
-        
-        select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px;
-            font-family: 'Traditional Arabic', 'Arial', sans-serif;
-        }
-        
-        button {
-            width: 100%;
-            padding: 12px;
-            margin-top: 20px;
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        
-        button:hover:not(:disabled) {
-            opacity: 0.9;
-        }
-        
-        button:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-        }
-        
-        .status {
-            margin-top: 15px;
-            padding: 10px;
-            border-radius: 5px;
-            display: none;
-        }
-        
-        .status.success {
+        .surah-checkbox.downloaded {
             background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-        
-        .status.error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-        
-        .status.info {
-            background: #d1ecf1;
-            color: #0c5460;
-            border: 1px solid #bee5eb;
-        }
-        
-        .info-box {
-            background: #e7f3ff;
-            color: #004085;
-            border: 1px solid #b8daff;
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 15px;
-            font-size: 14px;
-            display: none;
         }
         
         audio {
             width: 100%;
-            margin-top: 15px;
+            border-radius: 10px;
+        }
+        
+        .accordion-button:not(.collapsed) {
+            background: #e7f3ff;
+            color: #0c5460;
         }
         
         .progress {
-            width: 100%;
-            height: 20px;
-            background: #f0f0f0;
             border-radius: 10px;
-            overflow: hidden;
-            margin-top: 10px;
-            display: none;
+            height: 25px;
         }
         
-        .progress-bar {
-            height: 100%;
-            background: #007bff;
-            transition: width 0.3s;
-            text-align: center;
-            color: white;
-            font-size: 12px;
-            line-height: 20px;
-        }
-        
-        .stored-surahs {
-            margin-top: 10px;
-            font-size: 14px;
-            color: #666;
+        .badge-count {
+            font-size: 0.8rem;
+            vertical-align: middle;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>مقتطف القرآن الصوتي</h2>
-        
-        <div id="installSection" class="install-section">
-            <p>يمكنك تثبيت التطبيق على جهازك للوصول السريع</p>
-            <button class="install-btn" id="installBtn">تثبيت التطبيق</button>
-        </div>
-        
-        <div class="offline-section">
-            <h3>تحميل السور للاستخدام بدون إنترنت</h3>
-            <div id="surahCheckboxes"></div>
-            <button class="download-offline-btn" id="downloadOfflineBtn">تحميل السور المحددة</button>
-            <div class="progress" id="downloadProgress">
-                <div class="progress-bar" id="progressBar">0%</div>
-            </div>
-            <div class="stored-surahs" id="storedSurahs"></div>
-        </div>
-        
-        <label for="surahSelect">السورة:</label>
-        <select id="surahSelect">
-            <option value="">جاري التحميل...</option>
-        </select>
-        
-        <label for="startAyaSelect">الآية الأولى:</label>
-        <select id="startAyaSelect">
-            <option value="">اختر السورة أولاً...</option>
-        </select>
-        
-        <label for="endAyaSelect">الآية الأخيرة:</label>
-        <select id="endAyaSelect">
-            <option value="">اختر الآية الأولى أولاً...</option>
-        </select>
-        
-        <button id="downloadBtn" disabled>تحميل المقطع</button>
-        
-        <div id="infoBox" class="info-box"></div>
-        <div id="status" class="status"></div>
-        
-        <audio id="preview" controls style="display: none;"></audio>
+    <div class="online-indicator online" id="onlineIndicator">
+        <i class="bi bi-wifi"></i> متصل بالإنترنت
     </div>
 
+    <div class="main-container">
+        <!-- Install Card -->
+        <div class="card mb-3 d-none" id="installCard">
+            <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                        <h6 class="mb-1"><i class="bi bi-download"></i> تثبيت التطبيق</h6>
+                        <small class="text-muted">احصل على وصول سريع من الشاشة الرئيسية</small>
+                    </div>
+                    <button class="btn btn-install btn-sm" id="installBtn">
+                        <i class="bi bi-plus-circle"></i> تثبيت
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Card -->
+        <div class="card">
+            <div class="card-header text-center">
+                <h2 class="mb-0"><i class="bi bi-music-note-beamed"></i> مقتطف القرآن الصوتي</h2>
+            </div>
+            
+            <div class="card-body">
+                <!-- Offline Download Section -->
+                <div class="accordion mb-4" id="offlineAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#offlineCollapse">
+                                <i class="bi bi-cloud-download me-2"></i>
+                                تحميل السور للاستخدام بدون إنترنت
+                                <span class="badge bg-primary badge-count ms-2" id="storedCount">0</span>
+                            </button>
+                        </h2>
+                        <div id="offlineCollapse" class="accordion-collapse collapse" data-bs-parent="#offlineAccordion">
+                            <div class="accordion-body">
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <button class="btn btn-sm btn-outline-primary" id="selectAllBtn">
+                                            <i class="bi bi-check-all"></i> تحديد الكل
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-secondary" id="deselectAllBtn">
+                                            <i class="bi bi-x-circle"></i> إلغاء التحديد
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-danger" id="clearAllBtn">
+                                            <i class="bi bi-trash"></i> حذف الكل
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div id="surahCheckboxes" class="mb-3" style="max-height: 300px; overflow-y: auto;"></div>
+                                
+                                <button class="btn btn-info w-100" id="downloadOfflineBtn">
+                                    <i class="bi bi-download"></i> تحميل السور المحددة
+                                </button>
+                                
+                                <div class="progress mt-3 d-none" id="downloadProgress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" 
+                                         role="progressbar" 
+                                         id="progressBar" 
+                                         style="width: 0%">0%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Selection Form -->
+                <div class="mb-3">
+                    <label for="surahSelect" class="form-label fw-bold">
+                        <i class="bi bi-book"></i> السورة:
+                    </label>
+                    <select id="surahSelect" class="form-select form-select-lg">
+                        <option value="">جاري التحميل...</option>
+                    </select>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="startAyaSelect" class="form-label fw-bold">
+                        <i class="bi bi-play-circle"></i> الآية الأولى:
+                    </label>
+                    <select id="startAyaSelect" class="form-select aya-select">
+                        <option value="">اختر السورة أولاً...</option>
+                    </select>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="endAyaSelect" class="form-label fw-bold">
+                        <i class="bi bi-stop-circle"></i> الآية الأخيرة:
+                    </label>
+                    <select id="endAyaSelect" class="form-select aya-select">
+                        <option value="">اختر الآية الأولى أولاً...</option>
+                    </select>
+                </div>
+                
+                <button id="downloadBtn" class="btn btn-primary btn-lg w-100" disabled>
+                    <i class="bi bi-download"></i> تحميل المقطع
+                </button>
+                
+                <!-- Info Alert -->
+                <div class="alert alert-info mt-3 d-none" id="infoBox" role="alert"></div>
+                
+                <!-- Status Alert -->
+                <div class="alert mt-3 d-none" id="statusAlert" role="alert"></div>
+                
+                <!-- Audio Preview -->
+                <audio id="preview" controls class="mt-3 d-none"></audio>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
     <script>
         let db = null;
@@ -246,34 +231,53 @@
         const DB_NAME = 'quran_audio_cache';
         const DB_VERSION = 1;
         
-        const surahSelect = document.getElementById('surahSelect');
-        const startAyaSelect = document.getElementById('startAyaSelect');
-        const endAyaSelect = document.getElementById('endAyaSelect');
-        const downloadBtn = document.getElementById('downloadBtn');
-        const statusDiv = document.getElementById('status');
-        const infoBox = document.getElementById('infoBox');
-        const previewAudio = document.getElementById('preview');
-        const installBtn = document.getElementById('installBtn');
-        const installSection = document.getElementById('installSection');
-        const downloadOfflineBtn = document.getElementById('downloadOfflineBtn');
-        const downloadProgress = document.getElementById('downloadProgress');
-        const progressBar = document.getElementById('progressBar');
-        const storedSurahs = document.getElementById('storedSurahs');
-        const surahCheckboxes = document.getElementById('surahCheckboxes');
+        const elements = {
+            surahSelect: document.getElementById('surahSelect'),
+            startAyaSelect: document.getElementById('startAyaSelect'),
+            endAyaSelect: document.getElementById('endAyaSelect'),
+            downloadBtn: document.getElementById('downloadBtn'),
+            statusAlert: document.getElementById('statusAlert'),
+            infoBox: document.getElementById('infoBox'),
+            previewAudio: document.getElementById('preview'),
+            installBtn: document.getElementById('installBtn'),
+            installCard: document.getElementById('installCard'),
+            downloadOfflineBtn: document.getElementById('downloadOfflineBtn'),
+            downloadProgress: document.getElementById('downloadProgress'),
+            progressBar: document.getElementById('progressBar'),
+            storedCount: document.getElementById('storedCount'),
+            surahCheckboxes: document.getElementById('surahCheckboxes'),
+            onlineIndicator: document.getElementById('onlineIndicator'),
+            selectAllBtn: document.getElementById('selectAllBtn'),
+            deselectAllBtn: document.getElementById('deselectAllBtn'),
+            clearAllBtn: document.getElementById('clearAllBtn')
+        };
+
+        // Online/Offline Detection
+        function updateOnlineStatus() {
+            const isOnline = navigator.onLine;
+            elements.onlineIndicator.className = `online-indicator ${isOnline ? 'online' : 'offline'}`;
+            elements.onlineIndicator.innerHTML = isOnline 
+                ? '<i class="bi bi-wifi"></i> متصل بالإنترنت'
+                : '<i class="bi bi-wifi-off"></i> غير متصل';
+        }
+
+        window.addEventListener('online', updateOnlineStatus);
+        window.addEventListener('offline', updateOnlineStatus);
+        updateOnlineStatus();
 
         // PWA Install
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
-            installSection.style.display = 'block';
+            elements.installCard.classList.remove('d-none');
         });
 
-        installBtn.addEventListener('click', async () => {
+        elements.installBtn.addEventListener('click', async () => {
             if (!deferredPrompt) return;
             deferredPrompt.prompt();
             const { outcome } = await deferredPrompt.userChoice;
             if (outcome === 'accepted') {
-                installSection.style.display = 'none';
+                elements.installCard.classList.add('d-none');
             }
             deferredPrompt = null;
         });
@@ -282,10 +286,8 @@
         function openDB() {
             return new Promise((resolve, reject) => {
                 const request = indexedDB.open(DB_NAME, DB_VERSION);
-                
                 request.onerror = () => reject(request.error);
                 request.onsuccess = () => resolve(request.result);
-                
                 request.onupgradeneeded = (e) => {
                     const db = e.target.result;
                     if (!db.objectStoreNames.contains('audio')) {
@@ -301,7 +303,6 @@
                 const transaction = db.transaction(['audio'], 'readwrite');
                 const store = transaction.objectStore('audio');
                 const request = store.put({ surah, data: arrayBuffer });
-                
                 request.onsuccess = () => resolve();
                 request.onerror = () => reject(request.error);
             });
@@ -313,7 +314,6 @@
                 const transaction = db.transaction(['audio'], 'readonly');
                 const store = transaction.objectStore('audio');
                 const request = store.get(surah);
-                
                 request.onsuccess = () => resolve(request.result?.data || null);
                 request.onerror = () => reject(request.error);
             });
@@ -325,7 +325,6 @@
                 const transaction = db.transaction(['audio'], 'readonly');
                 const store = transaction.objectStore('audio');
                 const request = store.getAllKeys();
-                
                 request.onsuccess = () => resolve(request.result);
                 request.onerror = () => reject(request.error);
             });
@@ -337,7 +336,17 @@
                 const transaction = db.transaction(['audio'], 'readwrite');
                 const store = transaction.objectStore('audio');
                 const request = store.delete(surah);
-                
+                request.onsuccess = () => resolve();
+                request.onerror = () => reject(request.error);
+            });
+        }
+
+        async function clearAllCache() {
+            const db = await openDB();
+            return new Promise((resolve, reject) => {
+                const transaction = db.transaction(['audio'], 'readwrite');
+                const store = transaction.objectStore('audio');
+                const request = store.clear();
                 request.onsuccess = () => resolve();
                 request.onerror = () => reject(request.error);
             });
@@ -345,22 +354,32 @@
 
         async function updateStoredSurahsList() {
             const stored = await getStoredSurahs();
-            if (stored.length > 0) {
-                storedSurahs.innerHTML = `السور المحفوظة (${stored.length}): ${stored.map(s => s).join(', ')}`;
-            } else {
-                storedSurahs.innerHTML = 'لا توجد سور محفوظة بعد';
-            }
+            elements.storedCount.textContent = stored.length;
+            
+            // Update checkboxes
+            const checkboxes = elements.surahCheckboxes.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(cb => {
+                const surahNum = parseInt(cb.value);
+                const container = cb.closest('.surah-checkbox');
+                if (stored.includes(surahNum)) {
+                    cb.checked = true;
+                    container.classList.add('downloaded');
+                } else {
+                    container.classList.remove('downloaded');
+                }
+            });
         }
 
-        function showStatus(message, type) {
-            statusDiv.textContent = message;
-            statusDiv.className = `status ${type}`;
-            statusDiv.style.display = 'block';
+        function showStatus(message, type = 'info') {
+            const alertClass = `alert-${type}`;
+            elements.statusAlert.className = `alert ${alertClass} mt-3`;
+            elements.statusAlert.innerHTML = `<i class="bi bi-${type === 'success' ? 'check-circle' : type === 'danger' ? 'x-circle' : 'info-circle'}"></i> ${message}`;
+            elements.statusAlert.classList.remove('d-none');
         }
 
         function showInfo(message) {
-            infoBox.textContent = message;
-            infoBox.style.display = 'block';
+            elements.infoBox.innerHTML = `<i class="bi bi-clock"></i> ${message}`;
+            elements.infoBox.classList.remove('d-none');
         }
 
         async function initDatabase() {
@@ -378,10 +397,9 @@
                 await updateStoredSurahsList();
                 
                 showStatus('تم تحميل قاعدة البيانات بنجاح!', 'success');
-                setTimeout(() => statusDiv.style.display = 'none', 2000);
+                setTimeout(() => elements.statusAlert.classList.add('d-none'), 2000);
             } catch (error) {
-                showStatus(`خطأ في تحميل قاعدة البيانات: ${error.message}`, 'error');
-                console.error(error);
+                showStatus(`خطأ في تحميل قاعدة البيانات: ${error.message}`, 'danger');
             }
         }
 
@@ -389,8 +407,8 @@
             const result = db.exec('SELECT id_sura, sura, num_ayat FROM quran_index ORDER BY id_sura');
             
             if (result.length > 0) {
-                surahSelect.innerHTML = '';
-                surahCheckboxes.innerHTML = '';
+                elements.surahSelect.innerHTML = '';
+                elements.surahCheckboxes.innerHTML = '';
                 const rows = result[0].values;
                 
                 rows.forEach(row => {
@@ -400,30 +418,33 @@
                     option.value = id_sura;
                     option.textContent = `${id_sura}. ${sura}`;
                     option.dataset.numAyat = num_ayat;
-                    surahSelect.appendChild(option);
+                    elements.surahSelect.appendChild(option);
                     
                     const checkboxDiv = document.createElement('div');
-                    checkboxDiv.className = 'surah-checkbox';
+                    checkboxDiv.className = 'surah-checkbox form-check';
                     checkboxDiv.innerHTML = `
-                        <input type="checkbox" id="surah_${id_sura}" value="${id_sura}">
-                        <label for="surah_${id_sura}" style="margin: 0; font-weight: normal;">${id_sura}. ${sura}</label>
+                        <input type="checkbox" class="form-check-input" id="surah_${id_sura}" value="${id_sura}">
+                        <label class="form-check-label w-100" for="surah_${id_sura}">
+                            ${id_sura}. ${sura}
+                            <i class="bi bi-check-circle-fill text-success float-start d-none downloaded-icon"></i>
+                        </label>
                     `;
-                    surahCheckboxes.appendChild(checkboxDiv);
+                    elements.surahCheckboxes.appendChild(checkboxDiv);
                 });
                 
-                surahSelect.value = '1';
+                elements.surahSelect.value = '1';
                 loadAyasForSurah();
             }
         }
 
         function loadAyasForSurah() {
-            const surahId = parseInt(surahSelect.value);
+            const surahId = parseInt(elements.surahSelect.value);
             if (!surahId) return;
 
             const result = db.exec(`SELECT ayah, text FROM quran_ayat WHERE sura = ${surahId} ORDER BY ayah`);
             
             if (result.length > 0) {
-                startAyaSelect.innerHTML = '';
+                elements.startAyaSelect.innerHTML = '';
                 const rows = result[0].values;
                 
                 rows.forEach(row => {
@@ -432,24 +453,24 @@
                     option.value = ayah;
                     const truncatedText = text.length > 80 ? text.substring(0, 80) + '...' : text;
                     option.textContent = `${ayah}. ${truncatedText}`;
-                    startAyaSelect.appendChild(option);
+                    elements.startAyaSelect.appendChild(option);
                 });
                 
-                startAyaSelect.value = '1';
+                elements.startAyaSelect.value = '1';
                 updateEndAyaOptions();
             }
         }
 
         function updateEndAyaOptions() {
-            const startAya = parseInt(startAyaSelect.value);
-            const surahId = parseInt(surahSelect.value);
+            const startAya = parseInt(elements.startAyaSelect.value);
+            const surahId = parseInt(elements.surahSelect.value);
             
             if (!startAya || !surahId) return;
 
             const result = db.exec(`SELECT ayah, text FROM quran_ayat WHERE sura = ${surahId} AND ayah >= ${startAya} ORDER BY ayah`);
             
             if (result.length > 0) {
-                endAyaSelect.innerHTML = '';
+                elements.endAyaSelect.innerHTML = '';
                 const rows = result[0].values;
                 
                 rows.forEach(row => {
@@ -458,34 +479,61 @@
                     option.value = ayah;
                     const truncatedText = text.length > 80 ? text.substring(0, 80) + '...' : text;
                     option.textContent = `${ayah}. ${truncatedText}`;
-                    endAyaSelect.appendChild(option);
+                    elements.endAyaSelect.appendChild(option);
                 });
                 
-                const selectedOption = surahSelect.options[surahSelect.selectedIndex];
+                const selectedOption = elements.surahSelect.options[elements.surahSelect.selectedIndex];
                 const numAyat = parseInt(selectedOption.dataset.numAyat);
-                endAyaSelect.value = Math.min(parseInt(startAya) + 5, numAyat);
+                elements.endAyaSelect.value = Math.min(parseInt(startAya) + 5, numAyat);
                 
-                downloadBtn.disabled = false;
+                elements.downloadBtn.disabled = false;
             }
         }
 
-        downloadOfflineBtn.addEventListener('click', async () => {
-            const checkboxes = surahCheckboxes.querySelectorAll('input[type="checkbox"]:checked');
+        elements.selectAllBtn.addEventListener('click', () => {
+            const checkboxes = elements.surahCheckboxes.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(cb => cb.checked = true);
+        });
+
+        elements.deselectAllBtn.addEventListener('click', () => {
+            const checkboxes = elements.surahCheckboxes.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(cb => cb.checked = false);
+        });
+
+        elements.clearAllBtn.addEventListener('click', async () => {
+            if (!confirm('هل أنت متأكد من حذف جميع السور المحفوظة؟')) return;
+            
+            try {
+                await clearAllCache();
+                await updateStoredSurahsList();
+                showStatus('تم حذف جميع السور المحفوظة', 'success');
+            } catch (error) {
+                showStatus(`خطأ في الحذف: ${error.message}`, 'danger');
+            }
+        });
+
+        elements.downloadOfflineBtn.addEventListener('click', async () => {
+            if (!navigator.onLine) {
+                showStatus('يجب الاتصال بالإنترنت لتحميل السور', 'danger');
+                return;
+            }
+
+            const checkboxes = elements.surahCheckboxes.querySelectorAll('input[type="checkbox"]:checked');
             const selectedSurahs = Array.from(checkboxes).map(cb => parseInt(cb.value));
             
             if (selectedSurahs.length === 0) {
-                showStatus('الرجاء اختيار سورة واحدة على الأقل', 'error');
+                showStatus('الرجاء اختيار سورة واحدة على الأقل', 'danger');
                 return;
             }
             
-            downloadOfflineBtn.disabled = true;
-            downloadProgress.style.display = 'block';
+            elements.downloadOfflineBtn.disabled = true;
+            elements.downloadProgress.classList.remove('d-none');
             
             for (let i = 0; i < selectedSurahs.length; i++) {
                 const surahNum = selectedSurahs[i];
                 const progress = Math.round(((i + 1) / selectedSurahs.length) * 100);
-                progressBar.style.width = progress + '%';
-                progressBar.textContent = `${progress}% - جاري تحميل السورة ${surahNum}`;
+                elements.progressBar.style.width = progress + '%';
+                elements.progressBar.textContent = `${progress}% - جاري تحميل السورة ${surahNum}`;
                 
                 try {
                     const surahStr = String(surahNum).padStart(3, '0');
@@ -497,19 +545,19 @@
                     const arrayBuffer = await response.arrayBuffer();
                     await saveAudioToCache(surahNum, arrayBuffer);
                     
-                    checkboxes[i].checked = false;
+                    checkboxes[i].checked = true;
                 } catch (error) {
                     console.error(`خطأ في تحميل السورة ${surahNum}:`, error);
                 }
             }
             
-            progressBar.style.width = '100%';
-            progressBar.textContent = 'اكتمل التحميل!';
+            elements.progressBar.style.width = '100%';
+            elements.progressBar.textContent = 'اكتمل التحميل!';
             await updateStoredSurahsList();
             
             setTimeout(() => {
-                downloadProgress.style.display = 'none';
-                downloadOfflineBtn.disabled = false;
+                elements.downloadProgress.classList.add('d-none');
+                elements.downloadOfflineBtn.disabled = false;
                 showStatus('تم حفظ السور بنجاح!', 'success');
             }, 1500);
         });
@@ -545,24 +593,24 @@
         }
 
         async function downloadAudioSegment() {
-            const surahNumber = parseInt(surahSelect.value);
-            const startAya = parseInt(startAyaSelect.value);
-            const endAya = parseInt(endAyaSelect.value);
+            const surahNumber = parseInt(elements.surahSelect.value);
+            const startAya = parseInt(elements.startAyaSelect.value);
+            const endAya = parseInt(elements.endAyaSelect.value);
 
             if (!surahNumber || !startAya || !endAya) {
-                showStatus('الرجاء اختيار جميع الحقول', 'error');
+                showStatus('الرجاء اختيار جميع الحقول', 'danger');
                 return;
             }
 
             if (!db) {
-                showStatus('قاعدة البيانات غير محملة بعد. الرجاء الانتظار...', 'error');
+                showStatus('قاعدة البيانات غير محملة بعد. الرجاء الانتظار...', 'danger');
                 return;
             }
 
             try {
-                downloadBtn.disabled = true;
-                previewAudio.style.display = 'none';
-                infoBox.style.display = 'none';
+                elements.downloadBtn.disabled = true;
+                elements.previewAudio.classList.add('d-none');
+                elements.infoBox.classList.add('d-none');
 
                 showStatus('جاري حساب الأوقات من قاعدة البيانات...', 'info');
                 const { startTime, endTime } = calculateTimes(surahNumber, startAya, endAya);
@@ -572,6 +620,12 @@
                 let arrayBuffer = await getAudioFromCache(surahNumber);
                 
                 if (!arrayBuffer) {
+                    if (!navigator.onLine) {
+                        showStatus('لا يوجد اتصال بالإنترنت والسورة غير محفوظة. الرجاء تحميل السورة أولاً', 'danger');
+                        elements.downloadBtn.disabled = false;
+                        return;
+                    }
+                    
                     showStatus('جاري تحميل الملف الصوتي...', 'info');
                     const surahStr = String(surahNumber).padStart(3, '0');
                     const audioUrl = `https://download.tvquran.com/download/TvQuran.com__Yaseen/${surahStr}.mp3`;
@@ -617,10 +671,10 @@
                 const wavBlob = bufferToWave(segmentBuffer);
 
                 const previewUrl = URL.createObjectURL(wavBlob);
-                previewAudio.src = previewUrl;
-                previewAudio.style.display = 'block';
+                elements.previewAudio.src = previewUrl;
+                elements.previewAudio.classList.remove('d-none');
 
-                const surahName = surahSelect.options[surahSelect.selectedIndex].textContent.split('. ')[1];
+                const surahName = elements.surahSelect.options[elements.surahSelect.selectedIndex].textContent.split('. ')[1];
                 const a = document.createElement('a');
                 a.href = previewUrl;
                 a.download = `${surahName}_آية${startAya}-${endAya}.wav`;
@@ -630,10 +684,10 @@
 
                 showStatus('اكتمل التحميل! المعاينة متاحة أدناه.', 'success');
             } catch (error) {
-                showStatus(`خطأ: ${error.message}`, 'error');
+                showStatus(`خطأ: ${error.message}`, 'danger');
                 console.error(error);
             } finally {
-                downloadBtn.disabled = false;
+                elements.downloadBtn.disabled = false;
             }
         }
 
@@ -684,9 +738,9 @@
             }
         }
 
-        surahSelect.addEventListener('change', loadAyasForSurah);
-        startAyaSelect.addEventListener('change', updateEndAyaOptions);
-        downloadBtn.addEventListener('click', downloadAudioSegment);
+        elements.surahSelect.addEventListener('change', loadAyasForSurah);
+        elements.startAyaSelect.addEventListener('change', updateEndAyaOptions);
+        elements.downloadBtn.addEventListener('click', downloadAudioSegment);
 
         initDatabase();
     </script>
