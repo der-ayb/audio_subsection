@@ -9,7 +9,7 @@
       "args": [
         "-m",
         "http.server",
-        "5500",
+        "5503",
         "-d",
         "/home/dszerty/PycharmProjects/"
       ],
@@ -17,11 +17,11 @@
       "cwd": "${workspaceFolder}"
     },
     {
-      "name": "Ngrok HTTP 5500",
+      "name": "Ngrok HTTP 5503",
       "type": "node",
       "request": "launch",
       "runtimeExecutable": "ngrok",
-      "args": ["http", "5500"],
+      "args": ["http", "5503"],
       "console": "integratedTerminal",
       "cwd": "${workspaceFolder}"
     },

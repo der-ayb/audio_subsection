@@ -1,0 +1,69 @@
+{
+  "name": "مقتطف القرآن الصوتي",
+  "short_name": "مقتطف القرآن الصوتي",
+  "start_url": "/audio_subsection/index.html",
+  "scope": "/audio_subsection/",
+  "display": "standalone",
+  "display_override": [
+    "window-controls-overlay"
+  ],
+  "protocol_handlers": [
+    {
+      "protocol": "web+quran",
+      "url": "/?q=%s"
+    }
+  ],
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#4CAF50",
+  "description": "تطبيق ويب لتشغيل مقاطع صوتية من القرآن الكريم مع ميزات التنزيل والتشغيل دون اتصال.",
+  "icons": [
+    {
+      "src": "assets/images/manifest-icon-192.maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/images/manifest-icon-192.maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "assets/images/manifest-icon-512.maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/images/manifest-icon-512.maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/audio_subsection/assets/images/manifest-icon-512.maskable.png",
+      "sizes": "1617x1012",
+      "type": "image/png"
+    },
+    {
+      "src": "/audio_subsection/assets/images/manifest-icon-512.maskable.png",
+      "sizes": "720x1280",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/audio_subsection/assets/images/manifest-icon-512.maskable.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "categories": [
+    "education",
+    "productivity"
+  ]
+}
