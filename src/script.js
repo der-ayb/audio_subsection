@@ -1,9 +1,9 @@
 let db = null;
 let deferredPrompt = null;
 const DB_NAME = "quran_audio_cache";
-const DB_VERSION = 3;
-const BASE_URL =
-  "https://everyayah.com/data/warsh/warsh_ibrahim_aldosary_128kbps/";
+const DB_VERSION = 1;
+const BASE_URL = "https://raw.githubusercontent.com/brmhmh/yacineee/refs/heads/upup/"
+  // "https://raw.githubusercontent.com/brmhmh/ibraheem-aldosry/refs/heads/main/";
 
 const elements = {
   surahSelect: document.getElementById("surahSelect"),
@@ -488,6 +488,7 @@ async function downloadAudioSegment() {
           ayah
         ).padStart(3, "0")}`;
         const audioUrl = `${BASE_URL}${ayahId}.mp3`;
+        console.log(audioUrl)
 
         const response = await fetch(audioUrl);
         if (!response.ok) throw new Error(`فشل تحميل الآية ${ayah}`);
@@ -512,7 +513,7 @@ async function downloadAudioSegment() {
 
     const a = document.createElement("a");
     a.href = previewUrl;
-    a.download = `algerian-yassin.wav`;
+    a.download = `quran.wav`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
