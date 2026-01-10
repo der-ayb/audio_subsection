@@ -39,8 +39,6 @@ workbox.routing.registerRoute(
     url.origin === location.origin ||
     url.origin === "https://fonts.googleapis.com" ||
     url.origin === "https://cdnjs.cloudflare.com" ||
-    url.origin === "https://www.gstatic.com" ||
-    url.origin === "https://cdn.datatables.net" ||
     url.origin === "https://cdn.jsdelivr.net",
   new workbox.strategies.NetworkFirst({
     cacheName: "core-cache",

@@ -1,0 +1,29 @@
+# Ignore Python bytecode files
+*.pyc
+*.pyo
+__pycache__/
+
+# Ignore virtual environment directories
+VENV/
+env/
+.env
+# Ignore IDE specific files
+.idea/
+.vscode/
+.idx/
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignore log files
+*.log
+
+# Ignore compiled files
+*.o
+*.so
+*.exe
+
+utils/
+android/
+node_modules/
