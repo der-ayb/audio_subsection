@@ -17,7 +17,7 @@ workbox.precaching.precacheAndRoute(
     { url: "./manifest.json", revision: "1" },
 
     { url: "./src/style.css", revision: "1" },
-    { url: "./src/script.js", revision: "1" },
+    { url: "./src/script.js", revision: "2" },
 
     { url: "./assets/quran.sqlite", revision: "1" },
     // bootstrap
