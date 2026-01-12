@@ -3,7 +3,7 @@ let deferredPrompt = null;
 const DB_NAME = "quran_audio_cache";
 const DB_VERSION = 3;
 const BASE_URL =
-  "https://everyayah.com/data/warsh/warsh_yassin_al_jazaery_64kbps/";
+  "https://everyayah.com/data/warsh/warsh_ibrahim_aldosary_128kbps/";
 
 const elements = {
   surahSelect: document.getElementById("surahSelect"),
