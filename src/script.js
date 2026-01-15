@@ -2,8 +2,9 @@ let db = null;
 let deferredPrompt = null;
 const DB_NAME = "quran_audio_cache";
 const DB_VERSION = 1;
-const BASE_URL = "https://raw.githubusercontent.com/brmhmh/yacineee/refs/heads/upup/"
-  // "https://raw.githubusercontent.com/brmhmh/ibraheem-aldosry/refs/heads/main/";
+const BASE_URL =
+  "https://raw.githubusercontent.com/brmhmh/yacineee/refs/heads/upup/";
+// "https://raw.githubusercontent.com/brmhmh/ibraheem-aldosry/refs/heads/main/";
 
 const elements = {
   surahSelect: document.getElementById("surahSelect"),
@@ -237,7 +238,6 @@ async function initDatabase() {
     await updateStoredSurahsList();
 
     showStatus("تم تحميل قاعدة البيانات بنجاح!", "success");
-    setTimeout(() => elements.statusAlert.classList.add("d-none"), 2000);
   } catch (error) {
     showStatus(`خطأ في تحميل قاعدة البيانات: ${error.message}`, "danger");
   }
@@ -294,9 +294,7 @@ function loadAyasForSurah() {
       const [ayah, text] = row;
       const option = document.createElement("option");
       option.value = ayah;
-      const truncatedText =
-        text.length > 80 ? text.substring(0, 80) + "..." : text;
-      option.textContent = `${ayah}. ${truncatedText}`;
+      option.textContent = `${ayah}. ${text}`;
       elements.startAyaSelect.appendChild(option);
     });
 
@@ -323,16 +321,14 @@ function updateEndAyaOptions() {
       const [ayah, text] = row;
       const option = document.createElement("option");
       option.value = ayah;
-      const truncatedText =
-        text.length > 80 ? text.substring(0, 80) + "..." : text;
-      option.textContent = `${ayah}. ${truncatedText}`;
+      option.textContent = `${ayah}. ${text}`;
       elements.endAyaSelect.appendChild(option);
     });
 
     const selectedOption =
       elements.surahSelect.options[elements.surahSelect.selectedIndex];
     const numAyat = parseInt(selectedOption.dataset.numAyat);
-    elements.endAyaSelect.value = Math.min(parseInt(startAya) + 5, numAyat);
+    // elements.endAyaSelect.value = parseInt(startAya)
 
     elements.downloadBtn.disabled = false;
   }
@@ -488,7 +484,6 @@ async function downloadAudioSegment() {
           ayah
         ).padStart(3, "0")}`;
         const audioUrl = `${BASE_URL}${ayahId}.mp3`;
-        console.log(audioUrl)
 
         const response = await fetch(audioUrl);
         if (!response.ok) throw new Error(`فشل تحميل الآية ${ayah}`);
