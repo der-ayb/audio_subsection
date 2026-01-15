@@ -1,9 +1,8 @@
+const preAudioUrl =
+  "https://raw.githubusercontent.com/brmhmh/yacineee/refs/heads/upup/";
 let db = null;
-let deferredPrompt = null;
 const DB_NAME = "quran_audio_cache";
-const DB_VERSION = 3;
-const BASE_URL =
-  "https://everyayah.com/data/warsh/warsh_yassin_al_jazaery_64kbps/";
+const DB_VERSION = 1;
 
 const elements = {
   surahSelect: document.getElementById("surahSelect"),
@@ -43,74 +42,34 @@ updateOnlineStatus();
 function openDB() {
   return new Promise((resolve, reject) => {
     const request = indexedDB.open(DB_NAME, DB_VERSION);
-
     request.onerror = () => reject(request.error);
-
-    request.onsuccess = () => {
-      const db = request.result;
-
-      // Check if object store exists
-      if (!db.objectStoreNames.contains("ayahs")) {
-        // Close and reopen with higher version to trigger upgrade
-        db.close();
-        const newVersion = db.version + 1;
-        const upgradeRequest = indexedDB.open(DB_NAME, newVersion);
-
-        upgradeRequest.onupgradeneeded = (e) => {
-          const upgradeDb = e.target.result;
-          if (!upgradeDb.objectStoreNames.contains("ayahs")) {
-            upgradeDb.createObjectStore("ayahs", { keyPath: "ayahId" });
-          }
-        };
-
-        upgradeRequest.onsuccess = () => resolve(upgradeRequest.result);
-        upgradeRequest.onerror = () => reject(upgradeRequest.error);
-      } else {
-        resolve(db);
-      }
-    };
-
+    request.onsuccess = () => resolve(request.result);
     request.onupgradeneeded = (e) => {
       const db = e.target.result;
-
-      // Delete old object stores if they exist
-      if (db.objectStoreNames.contains("audio")) {
-        db.deleteObjectStore("audio");
-      }
-
-      // Create new object store
-      if (!db.objectStoreNames.contains("ayahs")) {
-        db.createObjectStore("ayahs", { keyPath: "ayahId" });
+      if (!db.objectStoreNames.contains("audio")) {
+        db.createObjectStore("audio", { keyPath: "surah" });
       }
     };
   });
 }
 
-async function saveAyahToCache(surah, ayah, arrayBuffer) {
+async function saveAudioToCache(surah, arrayBuffer) {
   const db = await openDB();
-  const ayahId = `${String(surah).padStart(3, "0")}${String(ayah).padStart(
-    3,
-    "0"
-  )}`;
   return new Promise((resolve, reject) => {
-    const transaction = db.transaction(["ayahs"], "readwrite");
-    const store = transaction.objectStore("ayahs");
-    const request = store.put({ ayahId, surah, ayah, data: arrayBuffer });
+    const transaction = db.transaction(["audio"], "readwrite");
+    const store = transaction.objectStore("audio");
+    const request = store.put({ surah, data: arrayBuffer });
     request.onsuccess = () => resolve();
     request.onerror = () => reject(request.error);
   });
 }
 
-async function getAyahFromCache(surah, ayah) {
+async function getAudioFromCache(surah) {
   const db = await openDB();
-  const ayahId = `${String(surah).padStart(3, "0")}${String(ayah).padStart(
-    3,
-    "0"
-  )}`;
   return new Promise((resolve, reject) => {
-    const transaction = db.transaction(["ayahs"], "readonly");
-    const store = transaction.objectStore("ayahs");
-    const request = store.get(ayahId);
+    const transaction = db.transaction(["audio"], "readonly");
+    const store = transaction.objectStore("audio");
+    const request = store.get(surah);
     request.onsuccess = () => resolve(request.result?.data || null);
     request.onerror = () => reject(request.error);
   });
@@ -119,64 +78,30 @@ async function getAyahFromCache(surah, ayah) {
 async function getStoredSurahs() {
   const db = await openDB();
   return new Promise((resolve, reject) => {
-    const transaction = db.transaction(["ayahs"], "readonly");
-    const store = transaction.objectStore("ayahs");
-    const request = store.getAll();
-    request.onsuccess = () => {
-      const ayahs = request.result;
-      const surahs = [...new Set(ayahs.map((a) => a.surah))];
-      resolve(surahs);
-    };
+    const transaction = db.transaction(["audio"], "readonly");
+    const store = transaction.objectStore("audio");
+    const request = store.getAllKeys();
+    request.onsuccess = () => resolve(request.result);
     request.onerror = () => reject(request.error);
   });
 }
 
-async function getSurahAyahsFromCache(surah) {
+async function deleteAudioFromCache(surah) {
   const db = await openDB();
   return new Promise((resolve, reject) => {
-    const transaction = db.transaction(["ayahs"], "readonly");
-    const store = transaction.objectStore("ayahs");
-    const request = store.getAll();
-    request.onsuccess = () => {
-      const ayahs = request.result.filter((a) => a.surah === surah);
-      resolve(ayahs.map((a) => a.ayah));
-    };
+    const transaction = db.transaction(["audio"], "readwrite");
+    const store = transaction.objectStore("audio");
+    const request = store.delete(surah);
+    request.onsuccess = () => resolve();
     request.onerror = () => reject(request.error);
-  });
-}
-
-async function deleteSurahFromCache(surah) {
-  const db = await openDB();
-  return new Promise((resolve, reject) => {
-    const transaction = db.transaction(["ayahs"], "readwrite");
-    const store = transaction.objectStore("ayahs");
-    const getAllRequest = store.getAll();
-
-    getAllRequest.onsuccess = () => {
-      const ayahs = getAllRequest.result.filter((a) => a.surah === surah);
-      let deleteCount = 0;
-
-      ayahs.forEach((ayah) => {
-        const deleteRequest = store.delete(ayah.ayahId);
-        deleteRequest.onsuccess = () => {
-          deleteCount++;
-          if (deleteCount === ayahs.length) {
-            resolve();
-          }
-        };
-      });
-
-      if (ayahs.length === 0) resolve();
-    };
-    getAllRequest.onerror = () => reject(getAllRequest.error);
   });
 }
 
 async function clearAllCache() {
   const db = await openDB();
   return new Promise((resolve, reject) => {
-    const transaction = db.transaction(["ayahs"], "readwrite");
-    const store = transaction.objectStore("ayahs");
+    const transaction = db.transaction(["audio"], "readwrite");
+    const store = transaction.objectStore("audio");
     const request = store.clear();
     request.onsuccess = () => resolve();
     request.onerror = () => reject(request.error);
@@ -187,6 +112,7 @@ async function updateStoredSurahsList() {
   const stored = await getStoredSurahs();
   elements.storedCount.textContent = stored.length;
 
+  // Update checkboxes
   const checkboxes = elements.surahCheckboxes.querySelectorAll(
     'input[type="checkbox"]'
   );
@@ -197,7 +123,6 @@ async function updateStoredSurahsList() {
       cb.checked = true;
       container.classList.add("downloaded");
     } else {
-      cb.checked = false;
       container.classList.remove("downloaded");
     }
   });
@@ -217,7 +142,7 @@ function showStatus(message, type = "info") {
 }
 
 function showInfo(message) {
-  elements.infoBox.innerHTML = `<i class="bi bi-info-circle"></i> ${message}`;
+  elements.infoBox.innerHTML = `<i class="bi bi-clock"></i> ${message}`;
   elements.infoBox.classList.remove("d-none");
 }
 
@@ -268,6 +193,7 @@ function loadSurahs() {
                         <input type="checkbox" class="form-check-input" id="surah_${id_sura}" value="${id_sura}">
                         <label class="form-check-label w-100" for="surah_${id_sura}">
                             ${id_sura}. ${sura}
+                            <i class="bi bi-check-circle-fill text-success float-start d-none downloaded-icon"></i>
                         </label>
                     `;
       elements.surahCheckboxes.appendChild(checkboxDiv);
@@ -332,7 +258,7 @@ function updateEndAyaOptions() {
     const selectedOption =
       elements.surahSelect.options[elements.surahSelect.selectedIndex];
     const numAyat = parseInt(selectedOption.dataset.numAyat);
-    elements.endAyaSelect.value = Math.min(parseInt(startAya) + 5, numAyat);
+    elements.endAyaSelect.value = numAyat;
 
     elements.downloadBtn.disabled = false;
   }
@@ -383,49 +309,25 @@ elements.downloadOfflineBtn.addEventListener("click", async () => {
   elements.downloadOfflineBtn.disabled = true;
   elements.downloadProgress.classList.remove("d-none");
 
-  let totalAyahs = 0;
-  let downloadedAyahs = 0;
+  for (let i = 0; i < selectedSurahs.length; i++) {
+    const surahNum = selectedSurahs[i];
+    const progress = Math.round(((i + 1) / selectedSurahs.length) * 100);
+    elements.progressBar.style.width = progress + "%";
+    elements.progressBar.textContent = `${progress}% - جاري تحميل السورة ${surahNum}`;
 
-  for (const surahNum of selectedSurahs) {
-    const result = db.exec(
-      `SELECT num_ayat FROM quran_index WHERE id_sura = ${surahNum}`
-    );
-    if (result.length > 0) {
-      totalAyahs += result[0].values[0][0];
-    }
-  }
+    try {
+      const surahStr = String(surahNum).padStart(3, "0");
+      const audioUrl = `${preAudioUrl}${surahStr}.mp3`;
+      const corsProxy = "https://corsproxy.io/?";
+      const proxiedUrl = corsProxy + encodeURIComponent(audioUrl);
 
-  for (const surahNum of selectedSurahs) {
-    const result = db.exec(
-      `SELECT num_ayat FROM quran_index WHERE id_sura = ${surahNum}`
-    );
-    if (result.length > 0) {
-      const numAyat = result[0].values[0][0];
+      const response = await fetch(proxiedUrl);
+      const arrayBuffer = await response.arrayBuffer();
+      await saveAudioToCache(surahNum, arrayBuffer);
 
-      for (let ayah = 1; ayah <= numAyat; ayah++) {
-        try {
-          const ayahId = `${String(surahNum).padStart(3, "0")}${String(
-            ayah
-          ).padStart(3, "0")}`;
-          const audioUrl = `${BASE_URL}${ayahId}.mp3`;
-
-          const response = await fetch(audioUrl);
-          if (response.ok) {
-            const arrayBuffer = await response.arrayBuffer();
-            await saveAyahToCache(surahNum, ayah, arrayBuffer);
-          }
-
-          downloadedAyahs++;
-          const progress = Math.round((downloadedAyahs / totalAyahs) * 100);
-          elements.progressBar.style.width = progress + "%";
-          elements.progressBar.textContent = `${progress}% - آية ${ayah}/${numAyat} من السورة ${surahNum}`;
-        } catch (error) {
-          console.error(
-            `خطأ في تحميل الآية ${ayah} من السورة ${surahNum}:`,
-            error
-          );
-        }
-      }
+      checkboxes[i].checked = true;
+    } catch (error) {
+      console.error(`خطأ في تحميل السورة ${surahNum}:`, error);
     }
   }
 
@@ -439,6 +341,42 @@ elements.downloadOfflineBtn.addEventListener("click", async () => {
     showStatus("تم حفظ السور بنجاح!", "success");
   }, 1500);
 });
+
+function calculateTimes(surahNumber, startAya, endAya) {
+  if (!db) throw new Error("قاعدة البيانات غير محملة");
+
+  const surahStr = String(surahNumber).padStart(3, "0");
+
+  let startTime = 0;
+  if (startAya > 1) {
+    for (let i = 1; i < startAya; i++) {
+      const ayaStr = `${surahStr}${String(i).padStart(3, "0")}`;
+      const result = db.exec(
+        `SELECT aya_duration_yacine FROM times WHERE aya = '${ayaStr}'`
+      );
+      if (result.length > 0 && result[0].values.length > 0) {
+        startTime += result[0].values[0][0];
+      }
+    }
+  }
+
+  let endTime = 0;
+  for (let i = 1; i <= endAya; i++) {
+    const ayaStr = `${surahStr}${String(i).padStart(3, "0")}`;
+    const result = db.exec(
+      `SELECT aya_duration_yacine FROM times WHERE aya = '${ayaStr}'`
+    );
+    if (result.length > 0 && result[0].values.length > 0) {
+      endTime += result[0].values[0][0];
+    } else {
+      throw new Error(
+        `الآية ${i} غير موجودة في قاعدة البيانات للسورة ${surahNumber}`
+      );
+    }
+  }
+
+  return { startTime, endTime };
+}
 
 async function downloadAudioSegment() {
   const surahNumber = parseInt(elements.surahSelect.value);
@@ -460,51 +398,93 @@ async function downloadAudioSegment() {
     elements.previewAudio.classList.add("d-none");
     elements.infoBox.classList.add("d-none");
 
-    const ayahCount = endAya - startAya + 1;
-    showInfo(`جاري تحميل ${ayahCount} آية...`);
-    showStatus("جاري تحميل الآيات...", "info");
+    showStatus("جاري حساب الأوقات من قاعدة البيانات...", "info");
+    const { startTime, endTime } = calculateTimes(
+      surahNumber,
+      startAya,
+      endAya
+    );
 
-    const audioBuffers = [];
-    const audioContext = new (window.AudioContext ||
-      window.webkitAudioContext)();
+    showInfo(
+      `المدى الزمني: ${startTime.toFixed(2)}ث - ${endTime.toFixed(
+        2
+      )}ث (المدة: ${(endTime - startTime).toFixed(2)}ث)`
+    );
 
-    for (let ayah = startAya; ayah <= endAya; ayah++) {
-      const currentAyah = ayah - startAya + 1;
-      showStatus(`جاري معالجة الآية ${currentAyah} من ${ayahCount}...`, "info");
+    let arrayBuffer = await getAudioFromCache(surahNumber);
 
-      let arrayBuffer = await getAyahFromCache(surahNumber, ayah);
-
-      if (!arrayBuffer) {
-        if (!navigator.onLine) {
-          showStatus(
-            `لا يوجد اتصال بالإنترنت والآية ${ayah} غير محفوظة`,
-            "danger"
-          );
-          elements.downloadBtn.disabled = false;
-          return;
-        }
-
-        const ayahId = `${String(surahNumber).padStart(3, "0")}${String(
-          ayah
-        ).padStart(3, "0")}`;
-        const audioUrl = `${BASE_URL}${ayahId}.mp3`;
-
-        const response = await fetch(audioUrl);
-        if (!response.ok) throw new Error(`فشل تحميل الآية ${ayah}`);
-        arrayBuffer = await response.arrayBuffer();
+    if (!arrayBuffer) {
+      if (!navigator.onLine) {
+        showStatus(
+          "لا يوجد اتصال بالإنترنت والسورة غير محفوظة. الرجاء تحميل السورة أولاً",
+          "danger"
+        );
+        elements.downloadBtn.disabled = false;
+        return;
       }
 
-      const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
-      audioBuffers.push(audioBuffer);
+      showStatus("جاري تحميل الملف الصوتي...", "info");
+      const surahStr = String(surahNumber).padStart(3, "0");
+      const audioUrl = `${preAudioUrl}${surahStr}.mp3`;
+      console.log(audioUrl)
+      const corsProxy = "https://corsproxy.io/?";
+      const proxiedUrl = corsProxy + encodeURIComponent(audioUrl);
+      const response = await fetch(proxiedUrl);
+      if (!response.ok) throw new Error("فشل تحميل الملف الصوتي");
+      arrayBuffer = await response.arrayBuffer();
+
+      // const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      // audioContext.decodeAudioData(arrayBuffer).then(async (decodedData) => {
+      //     console.table([
+      //         { sura: surahStr, realDuration: decodedData.duration, dbDuration: endTime, diff: decodedData.duration - endTime },
+      //     ]);
+      // }).catch((error) => {
+      //     console.error('Error decoding audio:', error);
+      // });
+    } else {
+      showStatus("تم العثور على الملف في التخزين المحلي", "success");
     }
 
-    showStatus("جاري دمج الآيات...", "info");
+    showStatus("جاري معالجة الصوت...", "info");
 
-    const mergedBuffer = mergeAudioBuffers(audioContext, audioBuffers);
+    const audioContext = new (window.AudioContext ||
+      window.webkitAudioContext)();
+    const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+
+    const sampleRate = audioBuffer.sampleRate;
+    const startSample = Math.floor(startTime * sampleRate);
+    const endSample =
+      // elements.endAyaSelect.selectedIndex === elements.endAyaSelect.options.length - 1
+      // ? audioBuffer.length :
+      Math.floor(endTime * sampleRate);
+    const segmentLength = endSample - startSample;
+    console.log(endSample + "---" + audioBuffer.length);
+
+    if (startSample < 0 || endSample > audioBuffer.length) {
+      throw new Error(
+        `مدى زمني غير صحيح. مدة الصوت هي ${(
+          audioBuffer.length / sampleRate
+        ).toFixed(2)} ثانية`
+      );
+    }
+
+    const segmentBuffer = audioContext.createBuffer(
+      audioBuffer.numberOfChannels,
+      segmentLength,
+      sampleRate
+    );
+
+    for (let channel = 0; channel < audioBuffer.numberOfChannels; channel++) {
+      const sourceData = audioBuffer.getChannelData(channel);
+      const segmentData = segmentBuffer.getChannelData(channel);
+      for (let i = 0; i < segmentLength; i++) {
+        segmentData[i] = sourceData[startSample + i];
+      }
+    }
 
     showStatus("جاري ترميز الصوت...", "info");
 
-    const wavBlob = bufferToWave(mergedBuffer);
+    const wavBlob = bufferToWave(segmentBuffer);
 
     const previewUrl = URL.createObjectURL(wavBlob);
     elements.previewAudio.src = previewUrl;
@@ -512,54 +492,18 @@ async function downloadAudioSegment() {
 
     const a = document.createElement("a");
     a.href = previewUrl;
-    a.download = `algerian-yassin.wav`;
+    a.download = `quran.wav`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
 
     showStatus("اكتمل التحميل! المعاينة متاحة أدناه.", "success");
-    showInfo(`تم دمج ${ayahCount} آية بنجاح`);
   } catch (error) {
     showStatus(`خطأ: ${error.message}`, "danger");
     console.error(error);
   } finally {
     elements.downloadBtn.disabled = false;
   }
-}
-
-function mergeAudioBuffers(audioContext, buffers) {
-  if (buffers.length === 0) {
-    throw new Error("لا توجد ملفات صوتية للدمج");
-  }
-
-  const numberOfChannels = buffers[0].numberOfChannels;
-  const sampleRate = buffers[0].sampleRate;
-
-  let totalLength = 0;
-  buffers.forEach((buffer) => {
-    totalLength += buffer.length;
-  });
-
-  const mergedBuffer = audioContext.createBuffer(
-    numberOfChannels,
-    totalLength,
-    sampleRate
-  );
-
-  let offset = 0;
-  buffers.forEach((buffer) => {
-    for (let channel = 0; channel < numberOfChannels; channel++) {
-      const sourceData = buffer.getChannelData(channel);
-      const targetData = mergedBuffer.getChannelData(channel);
-
-      for (let i = 0; i < buffer.length; i++) {
-        targetData[offset + i] = sourceData[i];
-      }
-    }
-    offset += buffer.length;
-  });
-
-  return mergedBuffer;
 }
 
 function bufferToWave(audioBuffer) {

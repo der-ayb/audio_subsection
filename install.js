@@ -24,9 +24,8 @@ if (sw_path) {
               newWorker.state === "installed" &&
               navigator.serviceWorker.controller
             ) {
-              showStatus(
+              showInfo(
                 "تم التماس تحديث جديد، يرجى <button type='button' class='btn btn-dark' onclick='window.location.reload()'>تحديث</button> الصفحة.",
-                "info"
               );
             }
           });
